@@ -19,6 +19,14 @@ body {
     background-color: white;
 }
 
+#infoBox p {
+padding-bottom: 10px;
+}
+
+#timertitle {
+    font-weight: 400;
+}
+
 #quizBox {
     display: flex;
     justify-content: center;
