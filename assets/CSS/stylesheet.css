@@ -1,0 +1,25 @@
+* {
+    font-family: sans-serif;
+
+}
+
+#infoBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    margin: 20%;
+    border: solid black;
+    padding: 5%;
+}
+
+#quizBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: solid black;
+    margin: 20%;
+    padding: 5%;
+}
