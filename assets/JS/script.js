@@ -3,6 +3,8 @@ var startQuiz = document.getElementById('startQuiz')
 var infoBox = document.getElementById('infoBox')
 var quizBox = document.getElementById('quizBox')
 var timer = document.getElementById('timer')
+var result = document.getElementById('result')
+var highscores = document.getElementById('highscores')
 
 //answer and question varibales
 var question = document.getElementById('question')
@@ -20,6 +22,8 @@ solution2.addEventListener('click', selectAnswer)
 solution3.addEventListener('click', selectAnswer)
 solution4.addEventListener('click', selectAnswer)
 
+//sets the highscore display to not appear from when teh page is loaded
+highscores.style.display = "none";
 
 //sets the quiz box display to none to hide it until test starts
 quizBox.style.display = "none";
@@ -45,7 +49,7 @@ function setTimer() {
         if(secondsLeft === 0) {
             clearInterval(clock);
         }
-    }, 1000);
+    }, 800);
 }
 
 //controls the index of the answerQuestions array
@@ -67,24 +71,23 @@ function selectAnswer(event) {
     var currentQuizData = answersQuestions[currentQuiz];
   
     if (selectedButton.id === currentQuizData.correct) {
-      // The selected answer is correct
       console.log("Correct answer!");
-      // You can perform further actions, such as updating the score or displaying feedback to the user
     } else {
-      // The selected answer is incorrect
-      console.log("Incorrect answer!");
-      // You can perform further actions, such as displaying feedback to the user
+        console.log("incorrect")
+    // this takes 10 seconds off the timer if answer is incorrect
+      var penalty = 10;
+      secondsLeft = secondsLeft - penalty; 
     }
-  
-    // Move to the next question
+    // Move to the next question in array
     currentQuiz++;
-    // Load the next question if available
     if (currentQuiz < answersQuestions.length) {
       loadQuiz();
     } else {
-      // Quiz is completed, perform actions for the end of the quiz
+      // displays the highscore at the end of the quiz
       console.log("Quiz completed!");
-      // You can display the final score or any other desired actions
+      highscores.style.display = "";
+      quizBox.style.display = "none";
+      
     }
   }
 
