@@ -14,10 +14,18 @@ var solution4 = document.getElementById('answers4')
 //listens for start button click
 startQuiz.addEventListener('click', startTest)
 
+//listens for which solution is clicked 
+solution1.addEventListener('click', selectAnswer)
+solution2.addEventListener('click', selectAnswer)
+solution3.addEventListener('click', selectAnswer)
+solution4.addEventListener('click', selectAnswer)
+
+
 //sets the quiz box display to none to hide it until test starts
 quizBox.style.display = "none";
 
-var secondsLeft = 60;
+//this amount of time for the quiz
+var secondsLeft = 61;
 
 //start the test button.
 //turns on and off the start information and the quiz box
@@ -26,7 +34,7 @@ function startTest() {
     quizBox.style.display = "";
     setTimer();
     loadQuiz ()
-    }
+}
 
 // this the timing function 
 function setTimer() {
@@ -40,8 +48,10 @@ function setTimer() {
     }, 1000);
 }
 
+//controls the index of the answerQuestions array
 var currentQuiz = 0;
 
+//this loads the questions and answers into the page from the array
 function loadQuiz () {
     var currentQuizData = answersQuestions[currentQuiz];
     question.innerText = currentQuizData.question
@@ -51,6 +61,32 @@ function loadQuiz () {
     solution4.innerText = currentQuizData.answer4
 }
 
+//check as to whether the selected answer is correct or not
+function selectAnswer(event) {
+    var selectedButton = event.target;
+    var currentQuizData = answersQuestions[currentQuiz];
+  
+    if (selectedButton.id === currentQuizData.correct) {
+      // The selected answer is correct
+      console.log("Correct answer!");
+      // You can perform further actions, such as updating the score or displaying feedback to the user
+    } else {
+      // The selected answer is incorrect
+      console.log("Incorrect answer!");
+      // You can perform further actions, such as displaying feedback to the user
+    }
+  
+    // Move to the next question
+    currentQuiz++;
+    // Load the next question if available
+    if (currentQuiz < answersQuestions.length) {
+      loadQuiz();
+    } else {
+      // Quiz is completed, perform actions for the end of the quiz
+      console.log("Quiz completed!");
+      // You can display the final score or any other desired actions
+    }
+  }
 
 //array cotanins questions and answers
 var answersQuestions = [{
@@ -59,7 +95,7 @@ var answersQuestions = [{
     answer2: '<br>',
     answer3: '<a>',
     answer4: '<em>',
-    correct: 'answer2',
+    correct: 'answers2',
 },
 {
     question: 'In CSS what does the unit vh stand for?',
@@ -67,7 +103,7 @@ var answersQuestions = [{
     answer2: 'valued height',
     answer3: 'variable height',
     answer4: 'var h',
-    correct: 'answer1',
+    correct: 'answers1',
 },
 {
     question: 'Which JavaScript method is used to write into an alert box?',
@@ -75,7 +111,7 @@ var answersQuestions = [{
     answer2: 'window.alertBox()',
     answer3: 'window.alert()',
     answer4: 'window.alertContent()',
-    correct: 'answer3',
+    correct: 'answers3',
 },
 {
     question: 'How many keywords are there in JavaScript to declare variables or constants?',
@@ -83,7 +119,7 @@ var answersQuestions = [{
     answer2: '<2>',
     answer3: '<3>',
     answer4: '<4>',
-    correct: 'answer3',
+    correct: 'answers3',
 },
 {
     question: 'Which of the following element is responsible for making the text bold in HTML?',
@@ -91,5 +127,5 @@ var answersQuestions = [{
     answer2: '<a>',
     answer3: '<br>',
     answer4: '<b>',
-    correct: 'answer4',
+    correct: 'answers4',
 }]
