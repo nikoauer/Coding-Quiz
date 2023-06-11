@@ -5,6 +5,8 @@ var quizBox = document.getElementById('quizBox')
 var timer = document.getElementById('timer')
 var result = document.getElementById('result')
 var highscores = document.getElementById('highscores')
+var score = document.getElementById('score')
+var scoreboard = document.getElementById('scoreboard')
 
 //answer and question varibales
 var question = document.getElementById('question')
@@ -27,6 +29,9 @@ highscores.style.display = "none";
 
 //sets the quiz box display to none to hide it until test starts
 quizBox.style.display = "none";
+
+//set the scoreboard to hidden
+scoreboard.style.display = "none";
 
 //this amount of time for the quiz
 var secondsLeft = 61;
@@ -84,12 +89,13 @@ function selectAnswer(event) {
       loadQuiz();
     } else {
       // displays the highscore at the end of the quiz
-      console.log("Quiz completed!");
+      score.textContent = secondsLeft;
       highscores.style.display = "";
       quizBox.style.display = "none";
-      
     }
   }
+
+
 
 //array cotanins questions and answers
 var answersQuestions = [{

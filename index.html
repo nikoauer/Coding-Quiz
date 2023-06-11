@@ -29,10 +29,20 @@
         <button id="answers4">Answer 4</button>
     </div>
 
+    <!-- this displays the users score and asks for a name -->
     <div id="highscores">
-        <h2 id="scorestitle">Highscores</h2>
-        <label for="Name">Name</label>
-        <input type="text" id="name">
+        <h2 id="scorestitle">Score</h2>
+        <h3>Your final score was <span id="score"></span></h3>
+        <label for="name" >Name</label>
+        <input type="text" id="name" autocomplete="off">
+        <button id="submit">Submit</button>
     </div>
+
+    <!-- this displays the scoreboard of all the users that tried the test -->
+    <div id="scoreboard">
+        <h2>Scoreboard</h2>
+        <button id="restartQuiz">Restart Quiz</button>
+    </div>
+    
 </body>
 </html>
