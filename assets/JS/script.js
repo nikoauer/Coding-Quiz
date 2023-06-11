@@ -32,43 +32,43 @@ function setTimer() {
     }, 1000);
 }
 
-var answersQuestions [{
-    question: 'Which tag is used to create a blank line in HTML?'
-    answer1: '<b>'
-    answer2: '<br>'
-    answer3: '<a>'
-    answer4: '<em>'
-    correct: 'answer2'
-}
+var answersQuestions = [{
+    question: 'Which tag is used to create a blank line in HTML?',
+    answer1: '<b>',
+    answer2: '<br>',
+    answer3: '<a>',
+    answer4: '<em>',
+    correct: 'answer2',
+},
 {
-    question: 'In CSS what does the unit vh stand for?'
-    answer1: 'viewport height'
-    answer2: 'valued height'
-    answer3: 'variable height'
-    answer4: 'var h'
-    correct: 'answer1'
-}
+    question: 'In CSS what does the unit vh stand for?',
+    answer1: 'viewport height',
+    answer2: 'valued height',
+    answer3: 'variable height',
+    answer4: 'var h',
+    correct: 'answer1',
+},
 {
-    question: 'Which JavaScript method is used to write into an alert box?'
-    answer1: 'window.alertHTML()'
-    answer2: 'window.alertBox()'
-    answer3: 'window.alert()'
-    answer4: 'window.alertContent()'
-    correct: 'answer3'
-}
+    question: 'Which JavaScript method is used to write into an alert box?',
+    answer1: 'window.alertHTML()',
+    answer2: 'window.alertBox()',
+    answer3: 'window.alert()',
+    answer4: 'window.alertContent()',
+    correct: 'answer3',
+},
 {
-    question: 'How many keywords are there in JavaScript to declare variables or constants?'
-    answer1: '<1>'
-    answer2: '<2>'
-    answer3: '<3>'
-    answer4: '<4>'
-    correct: 'answer3'
-}
+    question: 'How many keywords are there in JavaScript to declare variables or constants?',
+    answer1: '<1>',
+    answer2: '<2>',
+    answer3: '<3>',
+    answer4: '<4>',
+    correct: 'answer3',
+},
 {
-    question: 'Which of the following element is responsible for making the text bold in HTML?'
-    answer1: '<i>'
-    answer2: '<a>'
-    answer3: '<br>'
-    answer4: '<b>'
-    correct: 'answer4'
+    question: 'Which of the following element is responsible for making the text bold in HTML?',
+    answer1: '<i>',
+    answer2: '<a>',
+    answer3: '<br>',
+    answer4: '<b>',
+    correct: 'answer4',
 }]
