@@ -8,8 +8,7 @@ var highscores = document.getElementById('highscores')
 var score = document.getElementById('score')
 var scoreboard = document.getElementById('scoreboard')
 var submit = document.getElementById('submit')
-var usersName = document.getElementById('usersName')
-var usersScore = document.getElementById('usersScore')
+
 
 //answer and question varibales
 var question = document.getElementById('question')
@@ -53,14 +52,21 @@ function startTest() {
     loadQuiz ()
 }
 
+//allows for the clock variable to be cleared in other functions
+var clock;
+
 // this the timing function 
 function setTimer() {
-    var clock = setInterval(function() {
+     clock = setInterval(function() {
         secondsLeft--;
         timer.textContent = secondsLeft;
 
         if(secondsLeft === 0) {
             clearInterval(clock);
+            highscores.style.display = "";
+            quizBox.style.display = "none";
+            var lowscore = 0;
+            score.textContent = lowscore;
         }
     }, 800);
 }
@@ -98,9 +104,9 @@ function selectAnswer(event) {
     } else {
       // displays the highscore at the end of the quiz
       score.textContent = secondsLeft;
-      points = secondsLeft;
       highscores.style.display = "";
       quizBox.style.display = "none";
+      clearInterval(clock);
     }
   }
 
@@ -112,12 +118,10 @@ function selectAnswer(event) {
     localStorage.setItem("userName", name)
     localStorage.setItem("userScore", points)
     displayScore();
-  }
+}
 
   function displayScore(){
-    usersName.textContent = localStorage.getItem("userName")
-    usersScore.textContent = localStorage.getItem("userScore")
-  }
+}
 
 //array cotanins questions and answers
 var answersQuestions = [{
@@ -146,11 +150,11 @@ var answersQuestions = [{
 },
 {
     question: 'How many keywords are there in JavaScript to declare variables or constants?',
-    answer1: '<1>',
-    answer2: '<2>',
-    answer3: '<3>',
-    answer4: '<4>',
-    correct: 'answers3',
+    answer1: '<5>',
+    answer2: '<3>',
+    answer3: '<2>',
+    answer4: '<8>',
+    correct: 'answers2',
 },
 {
     question: 'Which of the following element is responsible for making the text bold in HTML?',
