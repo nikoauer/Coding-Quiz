@@ -152,6 +152,10 @@ padding-bottom: 10px;
     cursor: pointer;
     margin: 10px;
 }
+
+#name {
+    margin: 5px;
+}
  
 #scoreboard {
     display: flex;

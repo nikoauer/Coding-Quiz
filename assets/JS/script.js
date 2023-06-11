@@ -112,15 +112,27 @@ function selectAnswer(event) {
 
   //takes in users name for the scoreboard and saves it
   function nameInput(){
-    var name = document.getElementById('name').value;
+    var userName = document.getElementById('name').value;
+    if(userName === ''){
+        window.alert("Please type your initials")
+    } else {
     highscores.style.display = "none";
     scoreboard.style.display = "";
-    localStorage.setItem("userName", name)
-    localStorage.setItem("userScore", points)
+    var userData = {name: userName, score: secondsLeft};
+    var userDataString = JSON.stringify(userData);
+    localStorage.setItem('userData', userDataString);
     displayScore();
+    }
 }
 
+// this function is trying to retrive it 
   function displayScore(){
+    var storedDataString = localStorage.getItem('userData');
+    var storedData = JSON.parse(storedDataString);
+    var storedUserName = storedData.name;
+    var storedUserScore = storedData.score;
+    console.log = (storedUserName);
+    console.log = (storedUserScore); 
 }
 
 //array cotanins questions and answers
