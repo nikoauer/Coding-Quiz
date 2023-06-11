@@ -4,6 +4,13 @@ var infoBox = document.getElementById('infoBox')
 var quizBox = document.getElementById('quizBox')
 var timer = document.getElementById('timer')
 
+//answer and question varibales
+var question = document.getElementById('question')
+var solution1 = document.getElementById('answers1')
+var solution2 = document.getElementById('answers2')
+var solution3 = document.getElementById('answers3')
+var solution4 = document.getElementById('answers4')
+
 //listens for start button click
 startQuiz.addEventListener('click', startTest)
 
@@ -18,6 +25,7 @@ function startTest() {
     infoBox.style.display = "none";
     quizBox.style.display = "";
     setTimer();
+    loadQuiz ()
     }
 
 // this the timing function 
@@ -32,6 +40,19 @@ function setTimer() {
     }, 1000);
 }
 
+var currentQuiz = 0;
+
+function loadQuiz () {
+    var currentQuizData = answersQuestions[currentQuiz];
+    question.innerText = currentQuizData.question
+    solution1.textContent = currentQuizData.answer1
+    solution2.innerText = currentQuizData.answer2
+    solution3.innerText = currentQuizData.answer3
+    solution4.innerText = currentQuizData.answer4
+}
+
+
+//array cotanins questions and answers
 var answersQuestions = [{
     question: 'Which tag is used to create a blank line in HTML?',
     answer1: '<b>',
