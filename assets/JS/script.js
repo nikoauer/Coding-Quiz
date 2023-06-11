@@ -7,6 +7,9 @@ var result = document.getElementById('result')
 var highscores = document.getElementById('highscores')
 var score = document.getElementById('score')
 var scoreboard = document.getElementById('scoreboard')
+var submit = document.getElementById('submit')
+var usersName = document.getElementById('usersName')
+var usersScore = document.getElementById('usersScore')
 
 //answer and question varibales
 var question = document.getElementById('question')
@@ -24,6 +27,10 @@ solution2.addEventListener('click', selectAnswer)
 solution3.addEventListener('click', selectAnswer)
 solution4.addEventListener('click', selectAnswer)
 
+//listens for name submission
+submit.addEventListener('click', nameInput)
+
+
 //sets the highscore display to not appear from when teh page is loaded
 highscores.style.display = "none";
 
@@ -35,6 +42,7 @@ scoreboard.style.display = "none";
 
 //this amount of time for the quiz
 var secondsLeft = 61;
+var points = 0;
 
 //start the test button.
 //turns on and off the start information and the quiz box
@@ -90,12 +98,26 @@ function selectAnswer(event) {
     } else {
       // displays the highscore at the end of the quiz
       score.textContent = secondsLeft;
+      points = secondsLeft;
       highscores.style.display = "";
       quizBox.style.display = "none";
     }
   }
 
+  //takes in users name for the scoreboard and saves it
+  function nameInput(){
+    var name = document.getElementById('name').value;
+    highscores.style.display = "none";
+    scoreboard.style.display = "";
+    localStorage.setItem("userName", name)
+    localStorage.setItem("userScore", points)
+    displayScore();
+  }
 
+  function displayScore(){
+    usersName.textContent = localStorage.getItem("userName")
+    usersScore.textContent = localStorage.getItem("userScore")
+  }
 
 //array cotanins questions and answers
 var answersQuestions = [{
