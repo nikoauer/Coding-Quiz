@@ -31,6 +31,7 @@ solution4.addEventListener('click', selectAnswer)
 //listens for name submission
 submit.addEventListener('click', nameInput)
 
+//listens to whether the restart button is clicked
 restartQuiz.addEventListener('click', restart)
 
 //this amount of time for the quiz
@@ -39,6 +40,7 @@ var points = 0;
 //allows for the clock variable to be cleared in other functions
 var clock;
 
+//this restarts the program at the end of the quiz
 function restart () {
     location.reload();
 }
@@ -61,12 +63,11 @@ function startTest() {
     loadQuiz ()
 }
 
-// this the timing function 
+// this is the timing function 
 function setTimer() {
      clock = setInterval(function() {
         secondsLeft--;
         timer.textContent = secondsLeft;
-
         if(secondsLeft === 0) {
             clearInterval(clock);
             highscores.style.display = "";
@@ -96,9 +97,17 @@ function selectAnswer(event) {
     var currentQuizData = answersQuestions[currentQuiz];
   
     if (selectedButton.id === currentQuizData.correct) {
-      console.log("Correct answer!");
+    // this function flashes green if the answer is correct
+    selectedButton.style.backgroundColor = "green";
+    setTimeout(function() {
+      selectedButton.style.backgroundColor = "";
+    }, 500);
     } else {
-        console.log("incorrect")
+    // this function flashes red if the answer is incorrect
+    selectedButton.style.backgroundColor = "red";
+    setTimeout(function() {
+      selectedButton.style.backgroundColor = "";
+    }, 500);
     // this takes 10 seconds off the timer if answer is incorrect
       var penalty = 10;
       secondsLeft = secondsLeft - penalty; 
