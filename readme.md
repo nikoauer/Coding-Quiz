@@ -9,7 +9,7 @@ The reason behind producing this project was to better understand and use the mo
 - how to build an array of multiple components ranging between questions, choices and solutions and have that displayed through javascript
 
 ## Usage
-This is the link to live github Pages site:
+This is the link to live github Pages site: https://nikoauer.github.io/Coding-Quiz/
 
 ![alt text](./assets/screenshots/screenshot1.png)
 ![alt text](./assets/screenshots/screenshot2.png)
