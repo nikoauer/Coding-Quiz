@@ -6,9 +6,10 @@ var timer = document.getElementById('timer')
 var result = document.getElementById('result')
 var highscores = document.getElementById('highscores')
 var score = document.getElementById('score')
-var scoreboard = document.getElementById('scoreboard')
+var scoreboard = document.getElementById('finalScore')
 var submit = document.getElementById('submit')
 var restartQuiz = document.getElementById('restartQuiz')
+var tableBody = document.getElementById('tableBody')
 
 
 //answer and question varibales
@@ -115,7 +116,7 @@ function selectAnswer(event) {
     }
   }
 
-  //takes in users name for the scoreboard and saves it
+  //takes in users initials for the scoreboard and saves it, forces user to add initials and cannot enter empty value
   function nameInput(){
     var userName = document.getElementById('name').value;
     if(userName === ''){
@@ -123,29 +124,48 @@ function selectAnswer(event) {
     } else {
     highscores.style.display = "none";
     scoreboard.style.display = "";
-
+    // this stores the userData as an object of both initials and score of the player to be later displayed 
     var storedDataString = localStorage.getItem('userData');
     var storedData = storedDataString ? JSON.parse(storedDataString) : [];
     var userData = {name: userName, score: secondsLeft};
     storedData.push(userData);
     var updatedDataString = JSON.stringify(storedData);
     localStorage.setItem('userData', updatedDataString);
-
-    displayScore();
     }
 }
 
 // this function is trying to retrive it 
   function displayScore(){
     var storedDataString = localStorage.getItem('userData');
-    var storedData = JSON.parse(storedDataString);
-    var storedUserName = storedData.name;
-    var storedUserScore = storedData.score;
-    console.log = (storedUserName);
-    console.log = (storedUserScore); 
+    var storedData = storedDataString ? JSON.parse(storedDataString) : [];
+    // this function orders the local storage data scores from high to low with the sort method
+    storedData.sort(function(a, b) {
+        return b.score - a.score;
+      });
+    //loops through the stored scores and names and populates the table
+    for (var i = 0; i < storedData.length; i++) {
+        var userData = storedData[i];
+        var userName = userData.name;
+        var userScore = userData.score;
+        
+        // creates a table row 
+        var row = document.createElement('tr');
+
+        // creates the name cell
+        var nameCell = document.createElement('td');
+        nameCell.textContent = userName;
+        row.appendChild(nameCell);
+
+        // creates the score cell
+        var scoreCell = document.createElement('td');
+        scoreCell.textContent = userScore;
+        row.appendChild(scoreCell);
+
+        // this append the row to the table body
+        tableBody.appendChild(row);
+     }
 }
-
-
+displayScore();
 
 //array cotanins questions and answers
 var answersQuestions = [{

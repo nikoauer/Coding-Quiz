@@ -39,9 +39,19 @@
     </div>
 
     <!-- this displays the scoreboard of all the users that tried the test -->
-    <div id="scoreboard">
+    <div id="finalScore">
         <h2>Scoreboard</h2>
-
+        <table id="scoreboard">
+        <thead>
+            <tr>
+              <th>Name</th>
+              <th>Score</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody">
+            <!-- Scores will be dynamically added here -->
+          </tbody>
+        </table>
         <button id="restartQuiz">Restart Quiz</button>
       </div>
 </body>
