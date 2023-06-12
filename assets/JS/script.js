@@ -8,6 +8,7 @@ var highscores = document.getElementById('highscores')
 var score = document.getElementById('score')
 var scoreboard = document.getElementById('scoreboard')
 var submit = document.getElementById('submit')
+var restartQuiz = document.getElementById('restartQuiz')
 
 
 //answer and question varibales
@@ -29,6 +30,17 @@ solution4.addEventListener('click', selectAnswer)
 //listens for name submission
 submit.addEventListener('click', nameInput)
 
+restartQuiz.addEventListener('click', restart)
+
+//this amount of time for the quiz
+var secondsLeft = 61;
+var points = 0;
+//allows for the clock variable to be cleared in other functions
+var clock;
+
+function restart () {
+    location.reload();
+}
 
 //sets the highscore display to not appear from when teh page is loaded
 highscores.style.display = "none";
@@ -39,10 +51,6 @@ quizBox.style.display = "none";
 //set the scoreboard to hidden
 scoreboard.style.display = "none";
 
-//this amount of time for the quiz
-var secondsLeft = 61;
-var points = 0;
-
 //start the test button.
 //turns on and off the start information and the quiz box
 function startTest() {
@@ -51,9 +59,6 @@ function startTest() {
     setTimer();
     loadQuiz ()
 }
-
-//allows for the clock variable to be cleared in other functions
-var clock;
 
 // this the timing function 
 function setTimer() {
@@ -118,9 +123,14 @@ function selectAnswer(event) {
     } else {
     highscores.style.display = "none";
     scoreboard.style.display = "";
+
+    var storedDataString = localStorage.getItem('userData');
+    var storedData = storedDataString ? JSON.parse(storedDataString) : [];
     var userData = {name: userName, score: secondsLeft};
-    var userDataString = JSON.stringify(userData);
-    localStorage.setItem('userData', userDataString);
+    storedData.push(userData);
+    var updatedDataString = JSON.stringify(storedData);
+    localStorage.setItem('userData', updatedDataString);
+
     displayScore();
     }
 }
@@ -134,6 +144,8 @@ function selectAnswer(event) {
     console.log = (storedUserName);
     console.log = (storedUserScore); 
 }
+
+
 
 //array cotanins questions and answers
 var answersQuestions = [{
